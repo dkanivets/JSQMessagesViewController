@@ -116,6 +116,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (nonatomic) NSLayoutConstraint *toolbarHeightConstraint;
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
+@property (nonatomic) CGRect untouchedRect;
 
 @end
 
@@ -796,6 +797,13 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     if (self.automaticallyScrollsToMostRecentMessage) {
         [self scrollToBottomAnimated:YES];
     }
+    
+    CGRect rect = textView.frame;
+    self.untouchedRect = textView.frame;
+    CGRect newRect = CGRectMake(8, rect.origin.y, rect.size.width + 30, rect.size.height);
+    [UIView animateWithDuration:0.25 animations:^{
+        textView.frame = newRect;
+    }];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -810,8 +818,10 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     if (textView != self.inputToolbar.contentView.textView) {
         return;
     }
-
     [textView resignFirstResponder];
+    [UIView animateWithDuration:0.25 animations:^{
+        textView.frame = self.untouchedRect;
+    }];
 }
 
 #pragma mark - Notifications
