@@ -825,6 +825,18 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     [textView resignFirstResponder];
 }
 
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+//    if (([text isEqualToString:@"\n"]) && (textView.frame.size.width != self.untouchedRect.size.width + 30)){
+//        CGRect rect = textView.frame;
+//        CGRect newRect = CGRectMake(8, rect.origin.y, rect.size.width + 30, rect.size.height);
+//        [UIView animateWithDuration:0.25 animations:^{
+//            textView.frame = newRect;
+//        }];
+//    }
+//    return true;
+//}
+
+
 #pragma mark - Notifications
 
 - (void)didReceiveMenuWillShowNotification:(NSNotification *)notification

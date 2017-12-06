@@ -138,6 +138,11 @@
     }
 
     // update the height constraint
+    if (self.hasText && self.bounds.origin.x != 8) {
+        CGRect rect = self.frame;
+        CGRect newRect = CGRectMake(8, rect.origin.y, UIScreen.mainScreen.bounds.size.width - 57, rect.size.height);
+        self.frame = newRect;
+    }
     self.heightConstraint.constant = newHeight;
 }
 
