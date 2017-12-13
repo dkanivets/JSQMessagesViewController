@@ -805,15 +805,15 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
         return;
     }
     if (!self.inputToolbar.contentView.textView.hasText) {
-        [UIView animateWithDuration:0.25 animations:^{
+//        [UIView animateWithDuration:0.25 animations:^{
             textView.frame = self.untouchedRect;
-        }];
+//        }];
     } else if (textView.frame.size.width != self.untouchedRect.size.width + 30){
         CGRect rect = textView.frame;
         CGRect newRect = CGRectMake(8, rect.origin.y, rect.size.width + 30, rect.size.height);
-        [UIView animateWithDuration:0.25 animations:^{
+//        [UIView animateWithDuration:0.25 animations:^{
             textView.frame = newRect;
-        }];
+        //        }];:
     }
 }
 
