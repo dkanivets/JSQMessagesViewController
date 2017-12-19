@@ -806,7 +806,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     if (textView != self.inputToolbar.contentView.textView) {
         return;
     }
-    if (!self.inputToolbar.contentView.textView.hasText) {
+    if (self.inputToolbar.contentView.textView.text.length == 0) {
 //        [UIView animateWithDuration:0.25 animations:^{
             textView.frame = self.untouchedRect;
 //        }];
@@ -828,14 +828,11 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 //- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-//    if (([text isEqualToString:@"\n"]) && (textView.frame.size.width != self.untouchedRect.size.width + 30)){
-//        CGRect rect = textView.frame;
-//        CGRect newRect = CGRectMake(8, rect.origin.y, rect.size.width + 30, rect.size.height);
-//        [UIView animateWithDuration:0.25 animations:^{
-//            textView.frame = newRect;
-//        }];
+//    if ([text isEqualToString:@"\n"]) {
+//        return false;
+//    } else {
+//        return true;
 //    }
-//    return true;
 //}
 
 
