@@ -738,6 +738,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
 {
     if (toolbar.sendButtonLocation == JSQMessagesInputSendButtonLocationLeft) {
+        self.inputToolbar.contentView.textView.frame = self.untouchedRect;
         [self didPressSendButton:sender
                  withMessageText:[self jsq_currentlyComposedMessageText]
                         senderId:[self.collectionView.dataSource senderId]
@@ -752,6 +753,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
 {
     if (toolbar.sendButtonLocation == JSQMessagesInputSendButtonLocationRight) {
+        self.inputToolbar.contentView.textView.frame = self.untouchedRect;
         [self didPressSendButton:sender
                  withMessageText:[self jsq_currentlyComposedMessageText]
                         senderId:[self.collectionView.dataSource senderId]
