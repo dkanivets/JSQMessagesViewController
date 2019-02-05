@@ -33,7 +33,11 @@
 
 - (void)jsq_pinAllEdgesOfSubview:(UIView *)subview
 {
-    [self jsq_pinSubview:subview toEdge:NSLayoutAttributeBottom];
+    if (@available(iOS 11.0, *)) {
+        [subview.bottomAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.bottomAnchor].active = YES;
+    } else {
+        [self jsq_pinSubview:subview toEdge:NSLayoutAttributeBottom];
+    }
     [self jsq_pinSubview:subview toEdge:NSLayoutAttributeTop];
     [self jsq_pinSubview:subview toEdge:NSLayoutAttributeLeading];
     [self jsq_pinSubview:subview toEdge:NSLayoutAttributeTrailing];
